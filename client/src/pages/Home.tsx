@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Zap, Wrench } from "lucide-react";
+import { ArrowRight, Zap, Wrench, Calculator } from "lucide-react";
 import { motion } from "framer-motion";
 
 const C = {
@@ -7,7 +7,8 @@ const C = {
   blueLight: "#e8f4fc",
   orange: "#FF9500",
   orangeLight: "#fff8ee",
-  green: "#4CAF50",
+  green: "#2e9958",
+  greenLight: "#eaf7ef",
   navy: "#1a2b4a",
   dark: "#1a1a2e",
   gray: "#5a6b7d",
@@ -26,6 +27,17 @@ const pages = [
     color: C.blue,
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/hero-house-heatpump-ihVZgyscJpE8VmEuqigtXu.webp",
+  },
+  {
+    path: "/dobbelttjek-v2",
+    title: "Dobbelttjek din pris (v2)",
+    subtitle: "Ny version med besparelseskalkulator",
+    description:
+      "Ny version af dobbelttjek-siden med interaktiv kalkulator, der viser din besparelse live. Grønt, minimalistisk design med fokus på transparente priser.",
+    icon: <Calculator className="w-6 h-6" />,
+    color: C.green,
+    image:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/happy-family-home-BroX8spFkM8eBq3b8GQzRm.webp",
   },
   {
     path: "/goer-det-selv",
@@ -148,6 +160,8 @@ export default function Home() {
                             backgroundColor:
                               page.color === C.blue
                                 ? C.blueLight
+                                : page.color === C.green
+                                ? C.greenLight
                                 : C.orangeLight,
                             color: page.color,
                           }}
