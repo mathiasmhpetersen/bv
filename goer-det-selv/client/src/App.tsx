@@ -4,13 +4,16 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import Home from "./pages/Home";
+import Dobbelttjek from "./pages/Dobbelttjek";
 import GoerDetSelv from "./pages/GoerDetSelv";
 
 
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={GoerDetSelv} />
+      <Route path={"/"} component={Home} />
+      <Route path={"/dobbelttjek"} component={Dobbelttjek} />
       <Route path={"/goer-det-selv"} component={GoerDetSelv} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
