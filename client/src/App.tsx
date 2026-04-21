@@ -9,6 +9,7 @@ import Dobbelttjek from "./pages/Dobbelttjek";
 import DobbelttjekV2 from "./pages/DobbelttjekV2";
 import DobbelttjekV3 from "./pages/DobbelttjekV3";
 import GoerDetSelv from "./pages/GoerDetSelv";
+import Tilskud from "./pages/Tilskud";
 
 
 function Router() {
@@ -19,6 +20,7 @@ function Router() {
       <Route path={"/dobbelttjek-v2"} component={DobbelttjekV2} />
       <Route path={"/dobbelttjek-v3"} component={DobbelttjekV3} />
       <Route path={"/goer-det-selv"} component={GoerDetSelv} />
+      <Route path={"/tilskud"} component={Tilskud} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

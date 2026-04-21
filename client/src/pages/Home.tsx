@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Zap, Wrench, Calculator, Ruler } from "lucide-react";
+import { ArrowRight, Zap, Wrench, Calculator, Ruler, HandCoins } from "lucide-react";
 import { motion } from "framer-motion";
 
 const C = {
@@ -60,6 +60,17 @@ const pages = [
     color: C.orange,
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/technician-install-Mj88npoE9GRKNVo3BuHHgr.webp",
+  },
+  {
+    path: "/tilskud",
+    title: "Energitilskud til varmepumpe",
+    subtitle: "Få op til 27.000 kr fra staten",
+    description:
+      "Staten betaler en del af din nye varmepumpe. Vi hjælper dig gratis med ansøgningen, så du får hele tilskuddet udbetalt direkte til din NemKonto.",
+    icon: <HandCoins className="w-6 h-6" />,
+    color: C.green,
+    image:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/happy-family-home-BroX8spFkM8eBq3b8GQzRm.webp",
   },
 ];
 
