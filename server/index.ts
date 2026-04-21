@@ -1,5 +1,7 @@
 import express from "express";
+import fs from "fs";
 import { createServer } from "http";
+import { createServer as createHttpsServer } from "https";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -23,11 +25,31 @@ async function startServer() {
     res.sendFile(path.join(staticPath, "index.html"));
   });
 
-  const port = process.env.PORT || 3000;
+  const httpPort = process.env.PORT || 3000;
+  const httpsPort = process.env.HTTPS_PORT || 443;
 
-  server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
+  server.listen(httpPort, () => {
+    console.log(`HTTP server running on http://localhost:${httpPort}/`);
   });
+
+  // Start HTTPS server with self-signed cert for Cloudflare Full SSL
+  const certDir = path.resolve(__dirname, process.env.NODE_ENV === "production" ? "certs" : path.join("..", "server", "certs"));
+  const certPath = path.join(certDir, "cert.pem");
+  const keyPath = path.join(certDir, "key.pem");
+
+  if (fs.existsSync(certPath) && fs.existsSync(keyPath)) {
+    const httpsServer = createHttpsServer(
+      {
+        cert: fs.readFileSync(certPath),
+        key: fs.readFileSync(keyPath),
+      },
+      app,
+    );
+
+    httpsServer.listen(httpsPort, () => {
+      console.log(`HTTPS server running on https://localhost:${httpsPort}/`);
+    });
+  }
 }
 
 startServer().catch(console.error);
