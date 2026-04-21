@@ -72,6 +72,17 @@ const pages = [
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/happy-family-home-BroX8spFkM8eBq3b8GQzRm.webp",
   },
+  {
+    path: "/tilskud-v2",
+    title: "Tilskud (v2) – med live beregner",
+    subtitle: "Se dit tilskud på 2 sekunder",
+    description:
+      "Variant af tilskud-siden med en interaktiv beregner der viser dit estimerede tilskud live, baseret på varmesystem og boligstørrelse. Varm/amber farvepalette og mørkt CTA-tema.",
+    icon: <Calculator className="w-6 h-6" />,
+    color: C.orange,
+    image:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/heatpump-closeup-7ha7wnuAVACjRiB85e2Vdj.webp",
+  },
 ];
 
 const fadeUp = {
