@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Zap, Wrench, Calculator } from "lucide-react";
+import { ArrowRight, Zap, Wrench, Calculator, Ruler } from "lucide-react";
 import { motion } from "framer-motion";
 
 const C = {
@@ -38,6 +38,17 @@ const pages = [
     color: C.green,
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/happy-family-home-BroX8spFkM8eBq3b8GQzRm.webp",
+  },
+  {
+    path: "/dobbelttjek-v3",
+    title: "Dobbelttjek din pris (v3)",
+    subtitle: "Med kW-beregner og pumpe-pakker",
+    description:
+      "Samme side som den originale Dobbelttjek, men med en 3-trins formular: boligoplysninger → beregnet kW-behov + anbefalede varmepumpe-pakker → kontaktformular.",
+    icon: <Ruler className="w-6 h-6" />,
+    color: C.blue,
+    image:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/heatpump-closeup-7ha7wnuAVACjRiB85e2Vdj.webp",
   },
   {
     path: "/goer-det-selv",
