@@ -460,21 +460,6 @@ export default function DobbelttjekV2() {
             {/* Trust row below calculator */}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
               <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  {[
-                    "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=80&h=80&fit=crop&crop=face",
-                    "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face",
-                    "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=80&h=80&fit=crop&crop=face",
-                  ].map((src, i) => (
-                    <img
-                      key={i}
-                      src={src}
-                      alt="Kunde"
-                      className="w-8 h-8 rounded-full border-2 object-cover"
-                      style={{ borderColor: C.cream }}
-                    />
-                  ))}
-                </div>
                 <span className="text-sm font-bold" style={{ color: C.gray }}>
                   10.000+ kunder
                 </span>

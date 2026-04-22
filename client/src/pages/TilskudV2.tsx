@@ -313,21 +313,6 @@ export default function TilskudV2() {
               </motion.div>
 
               <motion.div variants={fadeUp} className="flex items-center gap-4 pt-4">
-                <div className="flex -space-x-2">
-                  {[
-                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face",
-                    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
-                    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face",
-                  ].map((src, i) => (
-                    <img
-                      key={i}
-                      src={src}
-                      alt=""
-                      className="w-10 h-10 rounded-full border-2 object-cover"
-                      style={{ borderColor: C.cream }}
-                    />
-                  ))}
-                </div>
                 <div>
                   <div className="flex gap-0.5">
                     {[1, 2, 3, 4, 5].map((i) => (
