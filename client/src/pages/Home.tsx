@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Zap, Wrench, Calculator, Ruler, HandCoins } from "lucide-react";
+import { ArrowRight, Zap, Wrench, Calculator, Ruler, HandCoins, Sparkles, PhoneCall } from "lucide-react";
 import { motion } from "framer-motion";
 
 const C = {
@@ -71,6 +71,28 @@ const pages = [
     color: C.green,
     image:
       "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/happy-family-home-BroX8spFkM8eBq3b8GQzRm.webp",
+  },
+  {
+    path: "/tilskud-v2",
+    title: "Energitilskud (v2)",
+    subtitle: "Interaktiv live tilskudsberegner",
+    description:
+      "Variant med live kalkulator: flyt på skyderen og se tilskuddet opdatere i realtid. Visuel før/efter-sammenligning og trin-for-trin tidslinje fra ansøgning til udbetaling.",
+    icon: <Sparkles className="w-6 h-6" />,
+    color: C.green,
+    image:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/heatpump-closeup-7ha7wnuAVACjRiB85e2Vdj.webp",
+  },
+  {
+    path: "/tilskud-v3",
+    title: "Energitilskud (v3)",
+    subtitle: "Telefon-først med urgency",
+    description:
+      "Mørkt premium-design med kun ét felt: telefonnummer. Fokus på kundefortælling, pulje-urgency og tillid gennem ægte kundesager med udbetalte beløb.",
+    icon: <PhoneCall className="w-6 h-6" />,
+    color: C.orange,
+    image:
+      "https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/technician-install-Mj88npoE9GRKNVo3BuHHgr.webp",
   },
 ];
 

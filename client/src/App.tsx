@@ -10,6 +10,8 @@ import DobbelttjekV2 from "./pages/DobbelttjekV2";
 import DobbelttjekV3 from "./pages/DobbelttjekV3";
 import GoerDetSelv from "./pages/GoerDetSelv";
 import Tilskud from "./pages/Tilskud";
+import TilskudV2 from "./pages/TilskudV2";
+import TilskudV3 from "./pages/TilskudV3";
 
 
 function Router() {
@@ -21,6 +23,8 @@ function Router() {
       <Route path={"/dobbelttjek-v3"} component={DobbelttjekV3} />
       <Route path={"/goer-det-selv"} component={GoerDetSelv} />
       <Route path={"/tilskud"} component={Tilskud} />
+      <Route path={"/tilskud-v2"} component={TilskudV2} />
+      <Route path={"/tilskud-v3"} component={TilskudV3} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
