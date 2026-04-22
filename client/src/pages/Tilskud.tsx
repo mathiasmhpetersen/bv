@@ -275,22 +275,6 @@ export default function Tilskud() {
                 variants={fadeUp}
                 className="flex items-center gap-4 pt-4"
               >
-                <div className="flex -space-x-2">
-                  {[
-                    "https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=80&h=80&fit=crop&crop=face",
-                    "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face",
-                    "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=80&h=80&fit=crop&crop=face",
-                    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face",
-                  ].map((src, i) => (
-                    <img
-                      key={i}
-                      src={src}
-                      alt="Kunde"
-                      className="w-10 h-10 rounded-full border-2 object-cover"
-                      style={{ borderColor: C.white }}
-                    />
-                  ))}
-                </div>
                 <div>
                   <div className="flex gap-0.5">
                     {[1, 2, 3, 4, 5].map((i) => (
