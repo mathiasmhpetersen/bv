@@ -1,0 +1,949 @@
+<!-- =================================================================
+     BilligVentilation.dk – Gør-det-selv landing page
+     Statisk HTML til WordPress Custom HTML block.
+     Brug Tailwind Play CDN + Google Fonts + inline SVG ikoner.
+     ================================================================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  /* Scope base styles to the landing page wrapper so vi ikke rører WP-admin eller resten af siden. */
+  #bv-gds, #bv-gds * { box-sizing: border-box; }
+  #bv-gds {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 400;
+    color: #1a1a2e;
+    background: #ffffff;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  #bv-gds h1, #bv-gds h2, #bv-gds h3, #bv-gds h4, #bv-gds h5, #bv-gds h6 {
+    font-family: 'Saira Condensed', sans-serif;
+    font-weight: 700;
+    margin: 0;
+  }
+  #bv-gds p { margin: 0; }
+  #bv-gds button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  #bv-gds a { text-decoration: none; }
+  #bv-gds img { display: block; max-width: 100%; height: auto; }
+  #bv-gds input { font-family: inherit; }
+  #bv-gds details > summary { list-style: none; cursor: pointer; }
+  #bv-gds details > summary::-webkit-details-marker { display: none; }
+  #bv-gds details[open] .bv-chevron { transform: rotate(180deg); }
+  #bv-gds .bv-chevron { transition: transform 0.3s ease; }
+</style>
+
+<!-- Inline SVG sprite – ikoner genbruges via <use href="#id"/>. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="bv-i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+    </symbol>
+    <symbol id="bv-i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m6 9 6 6 6-6"/>
+    </symbol>
+    <symbol id="bv-i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </symbol>
+    <symbol id="bv-i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </symbol>
+    <symbol id="bv-i-star" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </symbol>
+    <symbol id="bv-i-thumbs-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88z"/>
+    </symbol>
+    <symbol id="bv-i-trending-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/>
+    </symbol>
+    <symbol id="bv-i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </symbol>
+    <symbol id="bv-i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+    </symbol>
+    <symbol id="bv-i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+    </symbol>
+    <symbol id="bv-i-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 10c0 7-8 13-8 13s-8-6-8-13a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>
+    </symbol>
+    <symbol id="bv-i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+    </symbol>
+    <symbol id="bv-i-hard-hat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/>
+      <path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/>
+      <path d="M4 15v-3a6 6 0 0 1 6-6h0"/>
+      <path d="M14 6a6 6 0 0 1 6 6v3"/>
+    </symbol>
+    <symbol id="bv-i-alert-triangle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+      <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div id="bv-gds" class="min-h-screen" style="background-color: #ffffff;">
+
+  <!-- ─── Sticky Top Bar ────────────────────────────────── -->
+  <div class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: rgba(255,255,255,0.95); border-color: #dce6f0;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
+      <span class="text-lg font-bold tracking-tight" style="color: #1a2b4a;">BilligVentilation.dk</span>
+      <span class="text-sm font-bold" style="color: #2e8bcb;">Tlf: 91 55 22 77</span>
+    </div>
+  </div>
+
+  <!-- ─── HERO ───────────────────────────────────────────── -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/hero-house-heatpump-ihVZgyscJpE8VmEuqigtXu.webp" alt="Dansk hus med varmepumpe" class="w-full h-full object-cover">
+      <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(26,43,74,0.90) 0%, rgba(46,139,203,0.78) 50%, rgba(26,43,74,0.88) 100%);"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Left: Copy -->
+        <div class="space-y-6">
+          <div>
+            <span class="inline-block px-4 py-1.5 rounded-full text-sm font-bold mb-4" style="background-color: rgba(255,149,0,0.2); color: #FFB74D;">
+              Gør-det-selv montage
+            </span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl tracking-tight" style="color: #ffffff; line-height: 1.1;">
+            Du behøver ikke betale<br>
+            <span style="color: #0193f4;">50.000 kr. for montage</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl leading-relaxed max-w-lg" style="color: rgba(255,255,255,0.85);">
+            Vi viser dig hvordan. Varmepumpen køber du hos os.
+            Montøren finder du selv – eller vi hjælper dig med det.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <span class="flex items-center gap-2 text-sm font-bold" style="color: rgba(255,255,255,0.9);">
+              <svg class="w-5 h-5" style="color: #4CAF50;"><use href="#bv-i-check-circle"/></svg>
+              Køb pumpen hos os
+            </span>
+            <span class="flex items-center gap-2 text-sm font-bold" style="color: rgba(255,255,255,0.9);">
+              <svg class="w-5 h-5" style="color: #4CAF50;"><use href="#bv-i-check-circle"/></svg>
+              Find montør selv eller via os
+            </span>
+            <span class="flex items-center gap-2 text-sm font-bold" style="color: rgba(255,255,255,0.9);">
+              <svg class="w-5 h-5" style="color: #4CAF50;"><use href="#bv-i-check-circle"/></svg>
+              Samme resultat, lavere pris
+            </span>
+          </div>
+
+          <div class="flex items-center gap-4 pt-4">
+            <div>
+              <div class="flex gap-0.5">
+                <svg class="w-4 h-4" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+                <svg class="w-4 h-4" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+                <svg class="w-4 h-4" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+                <svg class="w-4 h-4" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+                <svg class="w-4 h-4" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+              </div>
+              <p class="text-xs mt-0.5" style="color: rgba(255,255,255,0.7);">
+                Vores kunder monterer selv og sparer tusindvis
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form Card -->
+        <div>
+          <div class="rounded-2xl p-6 sm:p-8 shadow-2xl" style="background-color: #ffffff;">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background-color: #fff8ee;">
+                <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-wrench"/></svg>
+              </div>
+              <div>
+                <p class="font-bold text-lg" style="color: #1a1a2e;">Start dit gør-det-selv projekt</p>
+                <p class="text-sm" style="color: #5a6b7d;">Få din gratis montage-guide – det tager 2 min.</p>
+              </div>
+            </div>
+
+            <!-- INDSÆT WORDPRESS FORMULAR HER (fx Fluent Forms shortcode) -->
+
+            <p class="text-xs text-center mt-4" style="color: #5a6b7d;">
+              Uforpligtende · Gratis guide · Ingen binding
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── DIY vs. PRO STATS ────────────────────────────────── -->
+  <section class="py-20 md:py-28" style="background-color: #f5f8fb;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #FF9500;">
+          Det er ikke så svært som du tror
+        </p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl" style="color: #1a1a2e;">
+          10 ud af 12 trin kan du selv
+        </h2>
+        <p class="text-lg mt-4 max-w-2xl mx-auto" style="color: #5a6b7d;">
+          Kun 2 trin kræver en autoriseret fagmand. Resten klarer du selv
+          – og sparer 20.000-50.000 kr.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+
+        <!-- Traditional price -->
+        <div class="rounded-2xl p-8 border-2 relative overflow-hidden" style="border-color: #e0e0e0; background-color: #ffffff;">
+          <div class="absolute top-0 left-0 right-0" style="height: 0.375rem; background-color: #e0e0e0;"></div>
+          <p class="text-sm font-bold uppercase tracking-wider mb-2" style="color: #5a6b7d;">
+            Fuld montage af firma
+          </p>
+          <p class="font-bold mb-3" style="color: #c0392b; font-size: 55px;">
+            40.000-60.000 kr
+          </p>
+          <p class="text-sm mb-6" style="color: #5a6b7d;">
+            Typisk montagepris ved traditionelt firma
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center text-xs" style="background-color: #fde8e8; color: #c0392b;">✕</div>
+              <span class="text-sm" style="color: #5a6b7d;">Betaler for timer du selv kan klare</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center text-xs" style="background-color: #fde8e8; color: #c0392b;">✕</div>
+              <span class="text-sm" style="color: #5a6b7d;">Stor avance på simple opgaver</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center text-xs" style="background-color: #fde8e8; color: #c0392b;">✕</div>
+              <span class="text-sm" style="color: #5a6b7d;">Ingen kontrol over processen</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Savings -->
+        <div class="flex flex-col items-center justify-center py-8">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center mb-4 shadow-lg" style="background-color: #4CAF50;">
+            <svg class="w-10 h-10" style="color: #ffffff;"><use href="#bv-i-trending-down"/></svg>
+          </div>
+          <p class="text-3xl font-bold" style="color: #4CAF50;">Spar op til</p>
+          <p class="text-5xl font-bold" style="color: #4CAF50;">50.000 kr</p>
+          <p class="text-sm mt-2" style="color: #5a6b7d;">ved at gøre det meste selv</p>
+        </div>
+
+        <!-- DIY price -->
+        <div class="rounded-2xl p-8 border-2 relative overflow-hidden shadow-lg" style="border-color: #FF9500; background-color: #ffffff;">
+          <div class="absolute top-0 left-0 right-0" style="height: 0.375rem; background-color: #FF9500;"></div>
+          <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold" style="background-color: #fff8ee; color: #FF9500;">
+            Gør-det-selv
+          </div>
+          <p class="text-sm font-bold uppercase tracking-wider mb-2" style="color: #FF9500;">
+            Din pris med gør-det-selv
+          </p>
+          <p class="font-bold mb-3" style="color: #FF9500; font-size: 55px;">
+            5.000-15.000 kr
+          </p>
+          <p class="text-sm mb-6" style="color: #5a6b7d;">
+            Kun betaling for autoriseret el og VVS
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5" style="color: #4CAF50;"><use href="#bv-i-check-circle"/></svg>
+              <span class="text-sm font-bold" style="color: #1a1a2e;">Du gør det meste selv</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5" style="color: #4CAF50;"><use href="#bv-i-check-circle"/></svg>
+              <span class="text-sm font-bold" style="color: #1a1a2e;">Kun fagmand til det nødvendige</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5" style="color: #4CAF50;"><use href="#bv-i-check-circle"/></svg>
+              <span class="text-sm font-bold" style="color: #1a1a2e;">Fuld kontrol over hele processen</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── INSTALLATION TIMELINE ────────────────────────────── -->
+  <section class="py-20 md:py-28" style="background-color: #ffffff;">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #FF9500;">
+          Montage-guide
+        </p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl" style="color: #1a1a2e;">
+          Montage af luft/vand varmepumpe
+        </h2>
+        <p class="text-lg mt-4" style="color: #5a6b7d;">
+          Time for time – så du ved præcis hvad du kan selv
+        </p>
+      </div>
+
+      <div class="space-y-4">
+
+        <!-- Step 1 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #4CAF50; background-color: #f0faf0;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #4CAF50; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-hard-hat"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #4CAF50; color: #ffffff;">Time 1-3</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(76,175,80,0.15); color: #4CAF50;">Gør det selv</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">1. Udpakning, planering og gennemboring</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Udpakning af varer, planering af underlag til udedel, gennemboring til rørtræk.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #FF9500; background-color: #fff8ee;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #FF9500; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-shield"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #FF9500; color: #ffffff;">Time 3-5</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(255,149,0,0.15); color: #FF9500;">Kræver fagmand</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">2. Bortskaffelse af eksisterende fyr</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Fjernelse af gammelt fyr. Kan tage op til 2 timer ekstra.</p>
+              <div class="flex items-start gap-2 mt-2">
+                <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #FF9500;"><use href="#bv-i-alert-triangle"/></svg>
+                <p class="text-xs font-bold" style="color: #FF9500;">Anbefales at benytte autoriseret VVS. Krav til VVS-autorisation ved f.eks. gas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #4CAF50; background-color: #f0faf0;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #4CAF50; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-hard-hat"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #4CAF50; color: #ffffff;">Time 3-4</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(76,175,80,0.15); color: #4CAF50;">Gør det selv</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">3. Stille ude- og indedel på plads</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Placering af udendørs- og indendørsenhed på de rigtige positioner.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #4CAF50; background-color: #f0faf0;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #4CAF50; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-hard-hat"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #4CAF50; color: #ffffff;">Time 4-8</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(76,175,80,0.15); color: #4CAF50;">Gør det selv</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">4. Vandrørsføring</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Føring af vandrør mellem ude- og indedel.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #4CAF50; background-color: #f0faf0;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #4CAF50; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-hard-hat"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #4CAF50; color: #ffffff;">Time 8-10</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(76,175,80,0.15); color: #4CAF50;">Gør det selv</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">5. Elkabelføring</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Føring af elkabler til varmepumpen.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #4CAF50; background-color: #f0faf0;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #4CAF50; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-hard-hat"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #4CAF50; color: #ffffff;">Time 10-12</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(76,175,80,0.15); color: #4CAF50;">Gør det selv</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">6. Montering af VVS-ventiler</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Montering af nødvendige ventiler i VVS-systemet.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #FF9500; background-color: #fff8ee;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #FF9500; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-shield"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #FF9500; color: #ffffff;">Time 12-14</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(255,149,0,0.15); color: #FF9500;">Kræver fagmand</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">7. Elskabskobling, sikkerhedsafbryder og bimåler</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Tilslutning til elskab med sikkerhedsafbryder og bimåler.</p>
+              <div class="flex items-start gap-2 mt-2">
+                <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #FF9500;"><use href="#bv-i-alert-triangle"/></svg>
+                <p class="text-xs font-bold" style="color: #FF9500;">Anbefales at benytte autoriseret elektriker. Næsten altid krav.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 8 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #FF9500; background-color: #fff8ee;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #FF9500; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-shield"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #FF9500; color: #ffffff;">Time 14-15</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(255,149,0,0.15); color: #FF9500;">Kræver fagmand</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">8. Koldtvandstilslutning VVS</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Tilslutning af koldt vand til varmepumpens VVS-system.</p>
+              <div class="flex items-start gap-2 mt-2">
+                <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #FF9500;"><use href="#bv-i-alert-triangle"/></svg>
+                <p class="text-xs font-bold" style="color: #FF9500;">Krav til at benytte autoriseret VVS.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 9 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #4CAF50; background-color: #f0faf0;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #4CAF50; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-hard-hat"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #4CAF50; color: #ffffff;">Time 15-17</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(76,175,80,0.15); color: #4CAF50;">Gør det selv</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">9. Udluftning af centralvarmekreds</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Udluftning af hele centralvarmekredsen for optimal drift.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 10 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #4CAF50; background-color: #f0faf0;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #4CAF50; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-hard-hat"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #4CAF50; color: #ffffff;">Time 17-19</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(76,175,80,0.15); color: #4CAF50;">Gør det selv</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">10. Isolering af rør</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Isolering af alle rør for at minimere varmetab.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 11 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #4CAF50; background-color: #f0faf0;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #4CAF50; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-hard-hat"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #4CAF50; color: #ffffff;">Time 19-20</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(76,175,80,0.15); color: #4CAF50;">Gør det selv</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">11. Opstart og indregulering</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Opstart af varmepumpen og indregulering af systemet.</p>
+              <div class="flex items-start gap-2 mt-2">
+                <svg class="w-4 h-4 flex-shrink-0 mt-0.5" style="color: #FF9500;"><use href="#bv-i-alert-triangle"/></svg>
+                <p class="text-xs font-bold" style="color: #FF9500;">Anbefales at benytte producenten til opstart så vidt muligt.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 12 -->
+        <div class="rounded-xl p-6 border-2 transition-all hover:shadow-md" style="border-color: #4CAF50; background-color: #f0faf0;">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: #4CAF50; color: #ffffff;">
+              <svg class="w-6 h-6"><use href="#bv-i-hard-hat"/></svg>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center gap-3 mb-1 flex-wrap">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: #4CAF50; color: #ffffff;">Time 20-21</span>
+                <span class="text-xs font-bold px-2.5 py-1 rounded-full" style="background-color: rgba(76,175,80,0.15); color: #4CAF50;">Gør det selv</span>
+              </div>
+              <h3 class="text-lg font-bold mb-1" style="color: #1a1a2e;">12. Oprydning</h3>
+              <p class="text-sm" style="color: #5a6b7d;">Oprydning og færdiggørelse af installationen.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-8 rounded-xl p-6 text-center" style="background-color: #f0faf0; border: 2px solid #4CAF50;">
+        <p class="text-lg font-bold" style="color: #4CAF50;">
+          Total: ca. 21 timer over 2-3 weekender
+        </p>
+        <p class="text-sm mt-1" style="color: #5a6b7d;">
+          10 trin selv · 2 trin med fagmand · Ingen erfaring nødvendig
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ───────────────────────────────────── -->
+  <section class="py-20 md:py-28" style="background-color: #f5f8fb;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #2e8bcb;">
+          Sådan kommer du i gang
+        </p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl" style="color: #1a1a2e;">
+          3 enkle trin til din varmepumpe
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="relative rounded-2xl p-8 border transition-all hover:shadow-lg group" style="border-color: #dce6f0; background-color: #ffffff;">
+          <span class="absolute -top-4 left-8 px-3 py-1 rounded-full text-xs font-bold" style="background-color: #e8f4fc; color: #2e8bcb;">Trin 01</span>
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 mt-2" style="background-color: #e8f4fc; color: #2e8bcb;">
+            <svg class="w-6 h-6"><use href="#bv-i-zap"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="color: #1a1a2e;">Køb pumpen hos os</h3>
+          <p class="text-base leading-relaxed" style="color: #5a6b7d;">
+            Vi sælger varmepumper fra Panasonic, Bosch og Metro Therm til konkurrencedygtige priser – uden dyr montagepakke.
+          </p>
+        </div>
+
+        <div class="relative rounded-2xl p-8 border transition-all hover:shadow-lg group" style="border-color: #dce6f0; background-color: #ffffff;">
+          <span class="absolute -top-4 left-8 px-3 py-1 rounded-full text-xs font-bold" style="background-color: #fff8ee; color: #FF9500;">Trin 02</span>
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 mt-2" style="background-color: #fff8ee; color: #FF9500;">
+            <svg class="w-6 h-6"><use href="#bv-i-wrench"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="color: #1a1a2e;">Montér selv med vores guide</h3>
+          <p class="text-base leading-relaxed" style="color: #5a6b7d;">
+            Følg vores trin-for-trin guide. Du klarer det meste selv – kun el og visse VVS-dele kræver en fagmand.
+          </p>
+        </div>
+
+        <div class="relative rounded-2xl p-8 border transition-all hover:shadow-lg group" style="border-color: #dce6f0; background-color: #ffffff;">
+          <span class="absolute -top-4 left-8 px-3 py-1 rounded-full text-xs font-bold" style="background-color: #f0faf0; color: #4CAF50;">Trin 03</span>
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 mt-2" style="background-color: #f0faf0; color: #4CAF50;">
+            <svg class="w-6 h-6"><use href="#bv-i-thumbs-up"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="color: #1a1a2e;">Find montør til det nødvendige</h3>
+          <p class="text-base leading-relaxed" style="color: #5a6b7d;">
+            Vi hjælper dig med at finde en autoriseret elektriker og VVS'er til de få timer, der kræver en fagmand.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROBLEM / SOLUTION ─────────────────────────────── -->
+  <section class="py-20 md:py-28" style="background-color: #ffffff;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #FF9500;">
+            Hvorfor gør-det-selv?
+          </p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl mb-6" style="color: #1a1a2e;">
+            Montøren tager 50.000 kr. for 21 timers arbejde
+          </h2>
+          <p class="text-lg leading-relaxed mb-8" style="color: #5a6b7d;">
+            Det meste af arbejdet er faktisk ret enkelt – udpakning, placering,
+            rørtræk og isolering. Du betaler en montør over 2.000 kr/time
+            for ting, du sagtens kan klare selv.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background-color: #fde8e8;">
+                <span class="text-xs font-bold" style="color: #c0392b;">!</span>
+              </div>
+              <p class="text-base" style="color: #1a1a2e;">Montøren lægger stor avance på simple opgaver</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background-color: #fde8e8;">
+                <span class="text-xs font-bold" style="color: #c0392b;">!</span>
+              </div>
+              <p class="text-base" style="color: #1a1a2e;">Du betaler for timer du selv kan klare på en weekend</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background-color: #fde8e8;">
+                <span class="text-xs font-bold" style="color: #c0392b;">!</span>
+              </div>
+              <p class="text-base" style="color: #1a1a2e;">Kun 3-5 timer kræver faktisk en autoriseret fagmand</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background-color: #fde8e8;">
+                <span class="text-xs font-bold" style="color: #c0392b;">!</span>
+              </div>
+              <p class="text-base" style="color: #1a1a2e;">Resten er standard gør-det-selv arbejde</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/technician-install-Mj88npoE9GRKNVo3BuHHgr.webp" alt="Montage af varmepumpe" class="rounded-2xl shadow-xl w-full">
+          <div class="absolute -bottom-6 -left-6 rounded-xl p-5 shadow-lg" style="background-color: #ffffff;">
+            <p class="text-sm font-bold" style="color: #5a6b7d;">Gns. besparelse på montage</p>
+            <p class="text-3xl font-bold" style="color: #4CAF50;">38.000 kr</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ───────────────────────────────────── -->
+  <section class="py-20 md:py-28" style="background-color: #f5f8fb;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <p class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #2e8bcb;">
+          Gør-det-selv kunder
+        </p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl" style="color: #1a1a2e;">
+          De gjorde det selv – og sparede tusindvis
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="rounded-2xl p-8 border transition-all hover:shadow-lg" style="border-color: #dce6f0; background-color: #ffffff;">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+          </div>
+          <p class="text-base leading-relaxed mb-6" style="color: #5a6b7d;">
+            &ldquo;Jeg var nervøs for at gøre det selv, men det var faktisk overraskende nemt. Sparede 42.000 kr. på montagen og brugte kun en elektriker i 3 timer. Bedste weekend-projekt nogensinde.&rdquo;
+          </p>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="font-bold" style="color: #1a1a2e;">Søren Henriksen</p>
+              <p class="text-sm flex items-center gap-1" style="color: #5a6b7d;">
+                <svg class="w-3 h-3"><use href="#bv-i-map-pin"/></svg> Vejle
+              </p>
+            </div>
+            <div class="px-3 py-1.5 rounded-lg text-sm font-bold" style="background-color: #f0faf0; color: #4CAF50;">
+              Sparede 42.000 kr.
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-8 border transition-all hover:shadow-lg" style="border-color: #dce6f0; background-color: #ffffff;">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+          </div>
+          <p class="text-base leading-relaxed mb-6" style="color: #5a6b7d;">
+            &ldquo;Vi gjorde det sammen over 2 weekender. BilligVentilation guidede os hele vejen. Kun el-tilslutningen krævede en fagmand. Vi sparede over 35.000 kr.&rdquo;
+          </p>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="font-bold" style="color: #1a1a2e;">Lene &amp; Peter Sørensen</p>
+              <p class="text-sm flex items-center gap-1" style="color: #5a6b7d;">
+                <svg class="w-3 h-3"><use href="#bv-i-map-pin"/></svg> Silkeborg
+              </p>
+            </div>
+            <div class="px-3 py-1.5 rounded-lg text-sm font-bold" style="background-color: #f0faf0; color: #4CAF50;">
+              Sparede 35.000 kr.
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-8 border transition-all hover:shadow-lg" style="border-color: #dce6f0; background-color: #ffffff;">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+            <svg class="w-5 h-5" style="color: #FF9500;"><use href="#bv-i-star"/></svg>
+          </div>
+          <p class="text-base leading-relaxed mb-6" style="color: #5a6b7d;">
+            &ldquo;Som håndværker var det nemt, men selv min nabo uden erfaring klarede det med lidt hjælp. Tricket er at følge trin-for-trin guiden. Sparer kassen.&rdquo;
+          </p>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="font-bold" style="color: #1a1a2e;">Mikkel Andersen</p>
+              <p class="text-sm flex items-center gap-1" style="color: #5a6b7d;">
+                <svg class="w-3 h-3"><use href="#bv-i-map-pin"/></svg> Holbæk
+              </p>
+            </div>
+            <div class="px-3 py-1.5 rounded-lg text-sm font-bold" style="background-color: #f0faf0; color: #4CAF50;">
+              Sparede 48.000 kr.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRUST INDICATORS ───────────────────────────────── -->
+  <section class="py-16" style="background-color: #1a2b4a;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-xl mx-auto flex items-center justify-center mb-3" style="background-color: rgba(255,149,0,0.2); color: #FF9500;">
+            <svg class="w-7 h-7"><use href="#bv-i-users"/></svg>
+          </div>
+          <p class="text-2xl font-bold" style="color: #ffffff;">10.000+</p>
+          <p class="text-sm" style="color: rgba(255,255,255,0.6);">Tilfredse kunder</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-xl mx-auto flex items-center justify-center mb-3" style="background-color: rgba(255,149,0,0.2); color: #FF9500;">
+            <svg class="w-7 h-7"><use href="#bv-i-star"/></svg>
+          </div>
+          <p class="text-2xl font-bold" style="color: #ffffff;">4.7/5</p>
+          <p class="text-sm" style="color: rgba(255,255,255,0.6);">På Trustpilot</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-xl mx-auto flex items-center justify-center mb-3" style="background-color: rgba(255,149,0,0.2); color: #FF9500;">
+            <svg class="w-7 h-7"><use href="#bv-i-wrench"/></svg>
+          </div>
+          <p class="text-2xl font-bold" style="color: #ffffff;">75%</p>
+          <p class="text-sm" style="color: rgba(255,255,255,0.6);">Monterer selv</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-xl mx-auto flex items-center justify-center mb-3" style="background-color: rgba(255,149,0,0.2); color: #FF9500;">
+            <svg class="w-7 h-7"><use href="#bv-i-clock"/></svg>
+          </div>
+          <p class="text-2xl font-bold" style="color: #ffffff;">21 timer</p>
+          <p class="text-sm" style="color: rgba(255,255,255,0.6);">Total montagetid</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-14 h-14 rounded-xl mx-auto flex items-center justify-center mb-3" style="background-color: rgba(255,149,0,0.2); color: #FF9500;">
+            <svg class="w-7 h-7"><use href="#bv-i-shield"/></svg>
+          </div>
+          <p class="text-2xl font-bold" style="color: #ffffff;">3-5 år</p>
+          <p class="text-sm" style="color: rgba(255,255,255,0.6);">Garanti</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ENERGY SUBSIDY ───────────────────────────────────── -->
+  <section class="py-20 md:py-28" style="background-color: #ffffff;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+        <div>
+          <p class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #2e8bcb;">
+            Energitilskud
+          </p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl mb-6" style="color: #1a1a2e;">
+            Staten betaler op til 27.000 kr – også ved gør-det-selv
+          </h2>
+          <p class="text-lg leading-relaxed mb-8" style="color: #5a6b7d;">
+            Tilskuddet afhænger af varmepumpen – ikke af hvem der monterer den.
+            Du får det fulde tilskud, uanset om du monterer selv eller bruger et firma.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 flex-shrink-0" style="color: #4CAF50;"><use href="#bv-i-check-circle"/></svg>
+              <p class="text-base font-bold" style="color: #1a1a2e;">Op til 27.000 kr. i tilskud fra staten</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 flex-shrink-0" style="color: #4CAF50;"><use href="#bv-i-check-circle"/></svg>
+              <p class="text-base font-bold" style="color: #1a1a2e;">Gælder også ved gør-det-selv montage</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 flex-shrink-0" style="color: #4CAF50;"><use href="#bv-i-check-circle"/></svg>
+              <p class="text-base font-bold" style="color: #1a1a2e;">Vi hjælper dig med ansøgningen</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663451266806/BrHGMBfJn8M7kqFwYYaDiY/happy-family-home-BroX8spFkM8eBq3b8GQzRm.webp" alt="Glad dansk familie foran deres hus" class="rounded-2xl shadow-xl w-full">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ────────────────────────────────────────────── -->
+  <section class="py-20 md:py-28" style="background-color: #f5f8fb;">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-sm font-bold uppercase tracking-widest mb-3" style="color: #2e8bcb;">
+          Ofte stillede spørgsmål
+        </p>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl" style="color: #1a1a2e;">
+          Gør-det-selv FAQ
+        </h2>
+      </div>
+
+      <div>
+
+        <details class="border-b" style="border-color: #dce6f0;">
+          <summary class="w-full flex items-center justify-between py-5 text-left">
+            <span class="text-lg font-bold" style="color: #1a1a2e;">Er det lovligt at montere en varmepumpe selv?</span>
+            <svg class="bv-chevron w-5 h-5" style="color: #2e8bcb;"><use href="#bv-i-chevron-down"/></svg>
+          </summary>
+          <p class="pb-5 text-base leading-relaxed" style="color: #5a6b7d;">
+            Ja, du må selv lave størstedelen af arbejdet. Kun el-tilslutning (elskab, sikkerhedsafbryder) kræver autoriseret elektriker, og visse VVS-opgaver kræver autoriseret VVS'er. Alt det øvrige – rørtræk, isolering, placering – kan du sagtens klare selv.
+          </p>
+        </details>
+
+        <details class="border-b" style="border-color: #dce6f0;">
+          <summary class="w-full flex items-center justify-between py-5 text-left">
+            <span class="text-lg font-bold" style="color: #1a1a2e;">Hvor meget kan jeg spare ved gør-det-selv?</span>
+            <svg class="bv-chevron w-5 h-5" style="color: #2e8bcb;"><use href="#bv-i-chevron-down"/></svg>
+          </summary>
+          <p class="pb-5 text-base leading-relaxed" style="color: #5a6b7d;">
+            De fleste sparer mellem 20.000 og 50.000 kr. på montagen. En typisk montør tager 40.000-60.000 kr. for en komplet installation. Ved at gøre det meste selv, betaler du kun for de timer der kræver autorisation.
+          </p>
+        </details>
+
+        <details class="border-b" style="border-color: #dce6f0;">
+          <summary class="w-full flex items-center justify-between py-5 text-left">
+            <span class="text-lg font-bold" style="color: #1a1a2e;">Hvad hvis jeg laver en fejl?</span>
+            <svg class="bv-chevron w-5 h-5" style="color: #2e8bcb;"><use href="#bv-i-chevron-down"/></svg>
+          </summary>
+          <p class="pb-5 text-base leading-relaxed" style="color: #5a6b7d;">
+            De fleste trin er relativt enkle og kan rettes. Det vigtige er, at de autoriserede opgaver (el og VVS-tilslutning) udføres af fagfolk. Vi guider dig igennem hele processen, og du kan altid ringe til os for hjælp.
+          </p>
+        </details>
+
+        <details class="border-b" style="border-color: #dce6f0;">
+          <summary class="w-full flex items-center justify-between py-5 text-left">
+            <span class="text-lg font-bold" style="color: #1a1a2e;">Hvor lang tid tager det at montere selv?</span>
+            <svg class="bv-chevron w-5 h-5" style="color: #2e8bcb;"><use href="#bv-i-chevron-down"/></svg>
+          </summary>
+          <p class="pb-5 text-base leading-relaxed" style="color: #5a6b7d;">
+            Hele processen tager ca. 21 timer fordelt over 2-3 weekender. De fleste af vores kunder er færdige på under 3 weekender. Du behøver ikke gøre det hele på én gang.
+          </p>
+        </details>
+
+        <details class="border-b" style="border-color: #dce6f0;">
+          <summary class="w-full flex items-center justify-between py-5 text-left">
+            <span class="text-lg font-bold" style="color: #1a1a2e;">Mister jeg garantien ved selv-montage?</span>
+            <svg class="bv-chevron w-5 h-5" style="color: #2e8bcb;"><use href="#bv-i-chevron-down"/></svg>
+          </summary>
+          <p class="pb-5 text-base leading-relaxed" style="color: #5a6b7d;">
+            Nej. Garantien på selve varmepumpen gælder stadig. Det vigtige er, at de autoriserede dele af installationen udføres korrekt af fagfolk. Vi hjælper dig med at sikre dette.
+          </p>
+        </details>
+
+        <details class="border-b" style="border-color: #dce6f0;">
+          <summary class="w-full flex items-center justify-between py-5 text-left">
+            <span class="text-lg font-bold" style="color: #1a1a2e;">Kan I hjælpe mig med at finde en montør til de autoriserede dele?</span>
+            <svg class="bv-chevron w-5 h-5" style="color: #2e8bcb;"><use href="#bv-i-chevron-down"/></svg>
+          </summary>
+          <p class="pb-5 text-base leading-relaxed" style="color: #5a6b7d;">
+            Ja! Vi har et netværk af autoriserede elektrikere og VVS'ere, der kan tage de opgaver der kræver autorisation. De kender vores varmepumper og kan hurtigt udføre arbejdet.
+          </p>
+        </details>
+
+        <details class="border-b" style="border-color: #dce6f0;">
+          <summary class="w-full flex items-center justify-between py-5 text-left">
+            <span class="text-lg font-bold" style="color: #1a1a2e;">Hvilke værktøjer skal jeg bruge?</span>
+            <svg class="bv-chevron w-5 h-5" style="color: #2e8bcb;"><use href="#bv-i-chevron-down"/></svg>
+          </summary>
+          <p class="pb-5 text-base leading-relaxed" style="color: #5a6b7d;">
+            Grundlæggende håndværktøj: boremaskine, vaterpas, skruetrækkere, rørtang og et sæt gaffelnøgler. Du behøver ikke specialværktøj – alt kan klares med standard DIY-udstyr.
+          </p>
+        </details>
+
+        <details class="border-b" style="border-color: #dce6f0;">
+          <summary class="w-full flex items-center justify-between py-5 text-left">
+            <span class="text-lg font-bold" style="color: #1a1a2e;">Får jeg stadig energitilskud?</span>
+            <svg class="bv-chevron w-5 h-5" style="color: #2e8bcb;"><use href="#bv-i-chevron-down"/></svg>
+          </summary>
+          <p class="pb-5 text-base leading-relaxed" style="color: #5a6b7d;">
+            Ja, du kan stadig få op til 27.000 kr. i energitilskud fra staten. Tilskuddet afhænger af varmepumpen – ikke af hvem der monterer den. Vi hjælper dig med ansøgningen.
+          </p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FINAL CTA ──────────────────────────────────────── -->
+  <section class="py-20 md:py-28 relative overflow-hidden" style="background-color: #FF9500;">
+    <div class="absolute inset-0" style="opacity: 0.1; background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.2) 0%, transparent 50%);"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl mb-6" style="color: #ffffff;">
+        Klar til at spare 50.000 kr?
+      </h2>
+      <p class="text-lg mb-8 max-w-xl mx-auto" style="color: rgba(255,255,255,0.9);">
+        Få din gratis gør-det-selv montage-guide og se præcis
+        hvad du kan klare selv – og hvad der kræver en fagmand.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#bv-gds" onclick="document.getElementById('bv-gds').scrollIntoView({behavior:'smooth'}); return false;" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:shadow-lg" style="background-color: #ffffff; color: #FF9500;">
+          Få din gratis guide nu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer class="py-10 border-t" style="border-color: #dce6f0;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm" style="color: #5a6b7d;">
+          &copy; 2026 BilligVentilation.dk – Alle rettigheder forbeholdes
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="tel:+4591552277" class="text-sm font-bold flex items-center gap-1" style="color: #2e8bcb;">
+            <svg class="w-4 h-4"><use href="#bv-i-phone"/></svg> 91 55 22 77
+          </a>
+          <a href="https://billigventilation.dk" class="text-sm font-bold" style="color: #2e8bcb;">
+            billigventilation.dk
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
